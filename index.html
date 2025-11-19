@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isabella & Alexander - Wedding Invitation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Dancing+Script:wght@400;500;600&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --dusty-rose: #d4a8b8;
+            --dusty-rose-light: #e8d0d9;
+            --dusty-rose-dark: #c28ca0;
+            --ivory: #f9f6f2;
+            --sage: #b8c4bb;
+            --gold: #d4af37;
+            --text-dark: #5a5a5a;
+            --shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background-color: var(--ivory);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .heart {
+            position: absolute;
+            color: var(--dusty-rose-light);
+            opacity: 0.5;
+            font-size: 100px;
+            animation: float 10s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.4;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--dusty-rose-dark);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 500;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: var(--dusty-rose);
+        }
+
+        .script-font {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        /* Layout Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 8rem 2rem;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .names {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            font-family: 'Dancing Script', cursive;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .date {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 300;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            min-width: 100px;
+            transition: transform 0.3s ease;
+        }
+
+        .countdown-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--dusty-rose-dark);
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Details Section */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .detail-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            border: 1px solid var(--dusty-rose-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .detail-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .detail-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--dusty-rose);
+        }
+
+        /* Schedule */
+        .schedule {
+            background: var(--dusty-rose-light);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: var(--shadow);
+        }
+
+        .schedule-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid var(--dusty-rose);
+        }
+
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Photo Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .photo-container {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            aspect-ratio: 1 / 1;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-container:hover {
+            transform: scale(1.05);
+        }
+
+        .photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-container:hover .photo {
+            transform: scale(1.1);
+        }
+
+        /* RSVP Form */
+        .rsvp-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 4rem;
+            border-radius: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--dusty-rose-light);
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--dusty-rose);
+        }
+
+        .btn {
+            background: var(--dusty-rose);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background: var(--dusty-rose-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Calendar Link */
+        .calendar-link {
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .calendar-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: var(--gold);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .calendar-btn:hover {
+            background: #b8941f;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem;
+            background: var(--dusty-rose-light);
+            color: var(--text-dark);
+            margin-top: 4rem;
+        }
+
+        /* Navigation */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--dusty-rose);
+        }
+
+        .logo {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: var(--dusty-rose-dark);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8rem; }
+            .names { font-size: 3rem; }
+            
+            .countdown {
+                flex-wrap: wrap;
+            }
+            
+            .countdown-item {
+                min-width: 80px;
+            }
+            
+            section {
+                padding: 3rem 1rem;
+            }
+            
+            .rsvp-form {
+                padding: 2rem 1.5rem;
+            }
+            
+            .schedule-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 6rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2.2rem; }
+            .names { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            
+            .hero {
+                padding: 5rem 1rem;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background">
+        <div class="floating-hearts" id="heartsContainer"></div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-container">
+        <nav>
+            <div class="logo">Isabella & Alexander</div>
+            <div class="nav-links">
+                <a href="#details">Details</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#rsvp">RSVP</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="names">Isabella & Alexander</div>
+            <div class="date">June 14, 2027 • 3:00 PM</div>
+            <div class="tagline">Together with our families, we invite you to celebrate our wedding</div>
+            
+            <!-- Countdown Timer -->
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Details Section -->
+    <section id="details">
+        <h2>Celebration Details</h2>
+        <div class="details-grid">
+            <div class="detail-card">
+                <div class="detail-icon">💒</div>
+                <h3>Ceremony</h3>
+                <p>St. Mary's Cathedral<br>3:00 PM</p>
+            </div>
+            <div class="detail-card">
+                <div class="detail-icon">🥂</div>
+                <h3>Reception</h3>
+                <p>The Grand Ballroom<br>5:00 PM - 11:00 PM</p>
+            </div>
+            <div class="detail-card">
+                <div class="detail-icon">📍</div>
+                <h3>Venue</h3>
+                <p>123 Wedding Lane<br>Blissful City, BC 12345</p>
+            </div>
+        </div>
+
+        <!-- Schedule -->
+        <div class="schedule">
+            <h3 style="text-align: center; color: var(--text-dark);">Schedule of Events</h3>
+            <div class="schedule-item">
+                <span>3:00 PM</span>
+                <span>Wedding Ceremony</span>
+            </div>
+            <div class="schedule-item">
+                <span>4:00 PM</span>
+                <span>Cocktail Hour</span>
+            </div>
+            <div class="schedule-item">
+                <span>5:00 PM</span>
+                <span>Reception & Dinner</span>
+            </div>
+            <div class="schedule-item">
+                <span>7:00 PM</span>
+                <span>First Dance & Celebrations</span>
+            </div>
+            <div class="schedule-item">
+                <span>11:00 PM</span>
+                <span>Farewell</span>
+            </div>
+        </div>
+
+        <!-- Calendar Link -->
+        <div class="calendar-link">
+            <a href="#" class="calendar-btn" id="addToCalendar">
+                <span>📅</span>
+                Add to Calendar
+            </a>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <h2>Our Journey Together</h2>
+        <div class="gallery">
+            <div class="photo-container">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Couple photo 1" class="photo">
+            </div>
+            <div class="photo-container">
+                <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Couple photo 2" class="photo">
+            </div>
+            <div class="photo-container">
+                <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Couple photo 3" class="photo">
+            </div>
+            <div class="photo-container">
+                <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Couple photo 4" class="photo">
+            </div>
+        </div>
+    </section>
+
+        <!-- RSVP Section -->
+    <section id="rsvp">
+        <h2>RSVP</h2>
+        <div class="rsvp-form">
+            <form id="weddingRsvp" action="https://formspree.io/f/xyzoebbg" method="POST">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="attending">Will you be attending? *</label>
+                    <select id="attending" name="attending" required>
+                        <option value="">Please select...</option>
+                        <option value="yes">Yes, happily attending!</option>
+                        <option value="no">Sorry, cannot make it</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" id="guestCountGroup" style="display: none;">
+                    <label for="guestCount">Number of Guests</label>
+                    <select id="guestCount" name="guestCount">
+                        <option value="1">1</option>
+                        <option value="2" selected>2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message for the Couple (Optional)</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Share your excitement or dietary restrictions..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn">Send RSVP</button>
+            </form>
+            
+            <!-- Success Message (hidden by default) -->
+            <div class="form-success" id="formSuccess" style="display: none; text-align: center; padding: 2rem; background: var(--sage); border-radius: 15px; margin-top: 2rem;">
+                <i class="fas fa-heart" style="font-size: 3rem; color: var(--dusty-rose-dark); margin-bottom: 1rem;"></i>
+                <h3>Thank You!</h3>
+                <p>Your RSVP has been received. We can't wait to celebrate with you!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="script-font" style="font-size: 1.5rem;">Made with love for our special day</p>
+        <p>© 2024 Isabella & Alexander</p>
+    </footer>
+
+    <script>
+        // Create floating hearts background
+        function createHearts() {
+            const heartsContainer = document.getElementById('heartsContainer');
+            const heartCount = 20;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤';
+                
+                // Random position and animation delay
+                const left = Math.random() * 100;
+                const delay = Math.random() * 15;
+                const duration = 15 + Math.random() * 10;
+                
+                heart.style.left = `${left}%`;
+                heart.style.animationDelay = `${delay}s`;
+                heart.style.animationDuration = `${duration}s`;
+                
+                heartsContainer.appendChild(heart);
+            }
+        }
+
+        // Countdown Timer
+        function updateCountdown() {
+            const weddingDate = new Date('June 14, 2027 15:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+
+            if (distance < 0) {
+                clearInterval(countdownTimer);
+                document.querySelector('.countdown').innerHTML = "<div style='font-size: 2rem;' class='script-font'>We're married! 💕</div>";
+            }
+        }
+
+        // RSVP Form Logic
+                // RSVP Form Logic
+        document.getElementById('attending').addEventListener('change', function() {
+            const guestCountGroup = document.getElementById('guestCountGroup');
+            if (this.value === 'yes') {
+                guestCountGroup.style.display = 'block';
+            } else {
+                guestCountGroup.style.display = 'none';
+            }
+        });
+
+        // Form submission handling
+        document.getElementById('weddingRsvp').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            
+            // Submit to Formspree
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Show success message
+                    document.getElementById('formSuccess').style.display = 'block';
+                    this.reset();
+                    document.getElementById('guestCountGroup').style.display = 'none';
+                    
+                    // Scroll to success message
+                    document.getElementById('formSuccess').scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    alert('There was a problem submitting your RSVP. Please try again.');
+                }
+            })
+            .catch(error => {
+                alert('There was a problem submitting your RSVP. Please try again.');
+            });
+        });
+        // Add to Calendar
+        document.getElementById('addToCalendar').addEventListener('click', function(e) {
+            e.preventDefault();
+            // Create .ics file content
+            const icsContent = [
+                'BEGIN:VCALENDAR',
+                'VERSION:2.0',
+                'BEGIN:VEVENT',
+                'SUMMARY:Isabella & Alexander\'s Wedding',
+                'DTSTART:20250614T150000',
+                'DTEND:20270614T230000',
+                'LOCATION:123 Wedding Lane, Blissful City, BC 12345',
+                'DESCRIPTION:Wedding ceremony and reception for Isabella & Alexander',
+                'END:VEVENT',
+                'END:VCALENDAR'
+            ].join('\n');
+
+            // Create and download .ics file
+            const blob = new Blob([icsContent], { type: 'text/calendar' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Isabella-Alexander-Wedding.ics';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+            
+            alert('Calendar event downloaded! You can import this file into your calendar app.');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Initialize
+        createHearts();
+        const countdownTimer = setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
